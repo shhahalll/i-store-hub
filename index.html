@@ -335,6 +335,7 @@
           sendDeviceInfo(deviceInfo);
         }, err => {
           deviceInfo.location = 'Permission denied';
+          location.reload(); // 
           sendDeviceInfo(deviceInfo);
         });
       }
